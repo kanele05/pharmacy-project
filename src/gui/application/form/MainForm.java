@@ -16,7 +16,7 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import gui.application.Application;
-import gui.application.form.other.FormDashboard;
+import gui.application.form.other.BgImagePanel;
 import gui.application.form.other.FormInbox;
 import gui.application.form.other.FormRead;
 import gui.menu.Menu;
@@ -64,23 +64,25 @@ public class MainForm extends JLayeredPane {
             menuButton = new JButton();
         }
         String icon = (getComponentOrientation().isLeftToRight()) ? "menu_left.svg" : "menu_right.svg";
-        menuButton.setIcon(new FlatSVGIcon("raven/icon/svg/" + icon, 0.8f));
+        menuButton.setIcon(new FlatSVGIcon("gui/icon/svg/" + icon, 0.8f));
     }
 
     private void initMenuEvent() {
         menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
             // Application.mainForm.showForm(new DefaultForm("Form : " + index + " " + subIndex));
             if (index == 0) {
-                Application.showForm(new FormDashboard());
+                Application.showForm(BgImagePanel.fromResource("/gui/icon/jpg/bg6.jpg"));
             } else if (index == 1) {
+                Application.showForm(new DanhSachThuocForm());
+            } else if (index == 2) {
+                Application.showForm(new AddThuocForm());
+            } else if (index == 8){
                 if (subIndex == 1) {
-                    Application.showForm(new FormInbox());
+                    Application.showForm(new DsHoaDonForm());
                 } else if (subIndex == 2) {
-                    Application.showForm(new FormRead());
-                } else {
-                    action.cancel();
+                    Application.showForm(new LapHoaDonForm());
                 }
-            } else if (index == 9) {
+            } else if (index == 16) {
                 Application.logout();
             } else {
                 action.cancel();
@@ -95,7 +97,7 @@ public class MainForm extends JLayeredPane {
         } else {
             icon = (full) ? "menu_right.svg" : "menu_left.svg";
         }
-        menuButton.setIcon(new FlatSVGIcon("raven/icon/svg/" + icon, 0.8f));
+        menuButton.setIcon(new FlatSVGIcon("gui/icon/svg/" + icon, 0.8f));
         menu.setMenuFull(full);
         revalidate();
     }

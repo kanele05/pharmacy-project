@@ -13,6 +13,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import gui.application.form.LoginForm;
 import gui.application.form.MainForm;
+import javax.swing.JFrame;
 import raven.toast.Notifications;
 
 /**
@@ -27,7 +28,7 @@ public class Application extends javax.swing.JFrame {
 
     public Application() {
         initComponents();
-        setSize(new Dimension(1366, 700));
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
         mainForm = new MainForm();
         loginForm = new LoginForm();
@@ -87,7 +88,7 @@ public class Application extends javax.swing.JFrame {
         FlatRobotoFont.install();
         FlatLaf.registerCustomDefaultsSource("gui.theme");
         UIManager.put("defaultFont", new Font(FlatRobotoFont.FAMILY, Font.PLAIN, 13));
-        FlatMacDarkLaf.setup();
+        FlatMacLightLaf.setup();
         java.awt.EventQueue.invokeLater(() -> {
             app = new Application();
             //  app.applyComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
