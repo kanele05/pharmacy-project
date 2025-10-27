@@ -106,4 +106,38 @@ public class ThuocDAO {
         stmt.setString(1, maThuoc);
         return stmt.executeUpdate() > 0;
     }
+    public Thuoc findById(String maThuoc) {
+    String sql = "SELECT maThuoc, tenThuoc, hamLuong, dangThuoc, giaThuoc, donViTinh, nhaSanXuat, trangThai, anhDaiDien, maKe, maNhanVien, maNhom " +
+                 "FROM Thuoc WHERE maThuoc = ?";
+    try {
+        Connection con = ConnectDB.getConnection();
+        PreparedStatement ps = con.prepareStatement(sql);
+        ps.setString(1, maThuoc);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            String ma = rs.getString(1);
+            String ten = rs.getString(2);
+            String ham = rs.getString(3);
+            String dang = rs.getString(4);
+            double gia = rs.getDouble(5);
+            String dvt = rs.getString(6);
+            String nsx = rs.getString(7);
+            String trangThai = rs.getString(8);
+            String anh = rs.getString(9);
+            String maKe = rs.getString(10);
+            String maNV = rs.getString(11);
+            String maNhom = rs.getString(12);
+
+            KeThuoc ke = new KeThuoc(maKe);
+            NhanVien nv = new NhanVien(maNV);
+            NhomThuoc nhom = new NhomThuoc(maNhom);
+
+            return new Thuoc(ma, ten, ham, dang, gia, dvt, nsx, trangThai, anh, ke, nv, nhom);
+        }
+        return null;
+    } catch (SQLException e) {
+        throw new RuntimeException(e);
+    }
+}
+
 }

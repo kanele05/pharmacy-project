@@ -25,19 +25,28 @@ import gui.menu.mode.ToolBarAccentColor;
 public class Menu extends JPanel {
 
     private final String menuItems[][] = {
-        {"~MAIN~"},
-        {"Dashboard"},
-        {"~WEB APP~"},
-        {"Email", "Inbox", "Read", "Compost"},
-        {"Chat"},
-        {"Calendar"},
-        {"~COMPONENT~"},
-        {"Advanced UI", "Cropper", "Owl Carousel", "Sweet Alert"},
-        {"Forms", "Basic Elements", "Advanced Elements", "Editors", "Wizard"},
-        {"~OTHER~"},
-        {"Charts", "Apex", "Flot", "Peity", "Sparkline"},
-        {"Icons", "Feather Icons", "Flag Icons", "Mdi Icons"},
-        {"Special Pages", "Blank page", "Faq", "Invoice", "Profile", "Pricing", "Timeline"},
+        {"~TRANG CHỦ~"},
+        {"Tổng quan"},
+        {"~THUỐC~"},
+        {"Tra cứu"},
+        {"Thêm thuốc"},
+        {"Đơn nhập", "Tra cứu phiếu nhập", "Lập phiếu nhập", "Tra cứu NCC", "Thêm NCC"},
+        {"Thống kê thuốc"},
+        {"~NHÂN VIÊN~"},
+        {"Tra cứu"},
+        {"Thêm nhân viên"},
+        {"~ĐƠN HÀNG~"},
+        {"Đơn đặt thuốc", "Tra cứu", "Lập đơn đặt"},
+        {"Hóa đơn", "Tra cứu", "Lập hóa đơn"},
+        {"Đơn đổi/trả", "Tra cứu", "Lập đơn đổi/trả"},
+        {"Thống kê doanh thu"},
+        {"~KHÁCH HÀNG~"},
+        {"Tra cứu"},
+        {"Thêm khách hàng"},
+        {"Thống kê"},
+        {"~KHUYẾN MÃI~"},
+        {"Tra cứu"},
+        {"Thêm khuyến mãi"},
         {"Logout"}
     };
 
@@ -65,7 +74,7 @@ public class Menu extends JPanel {
 
     private final List<MenuEvent> events = new ArrayList<>();
     private boolean menuFull = true;
-    private final String headerName = "Raven Channel";
+    private final String headerName = "Bình An";
 
     protected final boolean hideMenuTitleOnMinimum = true;
     protected final int menuTitleLeftInset = 5;
@@ -85,7 +94,7 @@ public class Menu extends JPanel {
                 + "background:$Menu.background;"
                 + "arc:10");
         header = new JLabel(headerName);
-        header.setIcon(new ImageIcon(getClass().getResource("/gui/icon/png/logo.png")));
+        header.setIcon(new ImageIcon(getClass().getResource("/gui/icon/png/logo_hieu_thuoc_tay_42x30px.png")));
         header.putClientProperty(FlatClientProperties.STYLE, ""
                 + "font:$Menu.header.font;"
                 + "foreground:$Menu.foreground");
@@ -114,7 +123,7 @@ public class Menu extends JPanel {
         toolBarAccentColor.setVisible(FlatUIUtils.getUIBoolean("AccentControl.show", false));
         add(header);
         add(scroll);
-        add(lightDarkMode);
+//        add(lightDarkMode);
         add(toolBarAccentColor);
     }
 
@@ -135,7 +144,7 @@ public class Menu extends JPanel {
         String menuName = title.substring(1, title.length() - 1);
         JLabel lbTitle = new JLabel(menuName);
         lbTitle.putClientProperty(FlatClientProperties.STYLE, ""
-                + "font:$Menu.label.font;"
+                + "font: bold $Menu.label.font;"
                 + "foreground:$Menu.title.foreground");
         return lbTitle;
     }
